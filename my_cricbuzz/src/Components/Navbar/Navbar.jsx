@@ -5,11 +5,13 @@ import Dropdown from "./Dropdown";
 import styles from "./Navbar.module.css";
 import {IoMdSearch} from "react-icons/io"
 import {CgProfile} from "react-icons/cg"
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   return (
     <>
       <Box maxH={"12rem"} display="flex" bg={"#009270"} color={"white"}>
+        <Link to="/">
         <Box w="140px" p={2} ml="0.3rem">
           <Image
             _hover={{
@@ -20,6 +22,7 @@ const Navbar = () => {
             src={"https://www.cricbuzz.com/images/cb_logo.svg"}
           />
         </Box>
+        </Link>
         <Box className={styles.tabBox}>Live Scores</Box>
         <Box className={styles.tabBox}>Schedule</Box>
         <Box className={styles.tabBox}>Archives</Box>
@@ -37,8 +40,8 @@ const Navbar = () => {
         </Box>
 
         <Box ml={"15px"} alignItems={"center"} display={"flex"}  fontSize="2xl" gap={1} >
-              <IoMdSearch/>
-              <CgProfile/>
+              <IoMdSearch cursor={"pointer"} />
+             <Link to="/login" ><CgProfile cursor={"pointer"}/></Link>
         </Box>
       </Box>
       <Box  h={"34px"} color={"white"} display={"flex"} alignItems="center" bg={"#4a4a4a"}>
