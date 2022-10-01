@@ -1,0 +1,13 @@
+.videoBox { position: relative; }
+
+.videoBox a {
+  position: absolute;
+  display: block;
+  background: url(http://www.slatecube.com/images/play-btn.png);
+  height: 100%;
+  width: 100%;
+  top: 60px;
+  left: 120px;
+  background-size: 50px 50px;
+  background-repeat: no-repeat;
+}

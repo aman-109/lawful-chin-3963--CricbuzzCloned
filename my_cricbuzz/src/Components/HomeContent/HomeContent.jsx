@@ -4,6 +4,8 @@ import NewsComp from "./NewsComp";
 import axios from "axios";
 import SimpleDateTime from "react-simple-timestamp-to-date";
 import NewsImageComp from "./NewsImageComp";
+import VideosComp from "./VideosComp";
+import PhotosComp from "./PhotosComp";
 
 // const options = {
 
@@ -29,18 +31,44 @@ import NewsImageComp from "./NewsImageComp";
 const HomeContent = () => {
   const [news, setNews] = useState([]);
   const [data, setData] = useState([]);
+  const [videoData, setVideoData] = useState([]);
+  const [photos, setPhotos] = useState([]);
 
   useEffect(() => {
     getNewsImage();
     getNews();
+    getVideos()
+    getPhotos()
   }, []);
 
   const getNewsImage = () => {
     axios
-      .get("https://thawing-atoll-50426.herokuapp.com/stories")
+      .get("https://cricbuzz-server.herokuapp.com/news")
+      .then((res) => {
+        // console.log(res.data);
+        setData(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+  const getPhotos = () => {
+    axios
+      .get("https://cricbuzz-server.herokuapp.com/photos")
+      .then((res) => {
+        // console.log(res.data);
+        setPhotos(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+  const getVideos = () => {
+    axios
+      .get("https://cricbuzz-server.herokuapp.com/videos")
       .then((res) => {
         console.log(res.data);
-        setData(res.data);
+        setVideoData(res.data);
       })
       .catch((err) => {
         console.log(err);
@@ -67,12 +95,15 @@ const HomeContent = () => {
     <>
       <Box
         mt={"0.3rem"}
-        border="1px solid"
+        // border="1px solid"
         display={"flex"}
         justifyContent="space-between"
         gap={"0.3rem"}
       >
-        <Box w="196px" p={2} bg="#fff" border="1px solid ">
+        <Box w="196px"    
+        // border="1px solid"
+        >
+          <Box h={"fit-content"} bg="#fff" p={2}>
           <Text as="b" mb={2} fontSize={"lg"} color={"#009270"}>
             LATEST NEWS
           </Text>
@@ -87,9 +118,27 @@ const HomeContent = () => {
                   />
                 )
             )}
+          </Box>
+          <Box h={"fit-content"} mt="0.3rem" bg="#fff" p={2}>
+          <Text as="b" mb={2} fontSize={"lg"} color={"#009270"}>
+            LATEST PHOTOS
+          </Text>
+          {photos &&
+            photos.map(
+              (ele) =>
+                 (
+                  <PhotosComp
+                    key={ele.id}
+                    caption={ele.caption}
+                    date={ele.dateTaken}
+                    image={ele.url}
+                  />
+                )
+            )}
+          </Box>
         </Box>
 
-        <Box w="470px" p={3} border="1px solid " bg="#fff">
+        <Box w="470px" p={3} bg="#fff">
           {data &&
             data.map((ele) => (
               <NewsImageComp
@@ -102,10 +151,23 @@ const HomeContent = () => {
             ))}
         </Box>
 
-        <Box w="342px" p={3} border="1px solid " bg="#fff">
+        <Box w="342px" h={"fit-content"} p={3}  bg="#fff">
           <Text as="b" mb={2} fontSize={"lg"} color={"#009270"}>
             FEATURED VIDEOS
           </Text>
+          {
+            videoData && videoData.map((ele)=>(
+
+              <VideosComp
+              key={ele.id}
+              image={ele.imageUrl}
+              title={ele.title}
+              seoTitle={ele.seoTitle}
+              date={ele.publishedAt}
+              />
+            ))
+          }
+           
         </Box>
       </Box>
     </>

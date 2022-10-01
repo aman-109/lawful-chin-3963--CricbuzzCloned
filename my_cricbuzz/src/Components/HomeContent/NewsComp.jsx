@@ -6,7 +6,7 @@ const NewsComp = ({title,date}) => {
   return (
     <>
        <Box>
-        <Text>
+        <Text _hover={{textDecoration:"underline !important"}}>
             <Link>
             {title}
             </Link>
