@@ -1,4 +1,6 @@
 import {
+  Alert,
+  AlertIcon,
   Box,
   Button,
   Divider,
@@ -10,20 +12,37 @@ import {
   InputLeftElement,
   TagLabel,
   Text,
+  useToast,
 } from "@chakra-ui/react";
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink } from "@chakra-ui/react";
 import { HiOutlineMail } from "react-icons/hi";
 
 import { ChevronRightIcon } from "@chakra-ui/icons";
 
 const Login = () => {
+  const toast =useToast()
   const [isOn, setIsOn] = useState(false);
-
+  const [temp,setTemp] =useState(false)
+  const navigate = useNavigate()
   const handleLogin = (e) => {
     setIsOn(true);
   };
+  const handleSubmit=()=>{
+    successToaster()
+    setTimeout(()=>{
+      navigate("/")
+    },2000)
+  }
+  const successToaster=()=>{
+    return toast({title: 'Success',
+    description: "Account Created Successfully.",
+    status: 'success',
+    position:"top-right",
+    duration: 1000,
+    isClosable: true})
+  }
 
   return (
     <>
@@ -73,7 +92,7 @@ const Login = () => {
               <Box w="13%">
                 <Image
                   w="100%"
-                  alt="plusLogo"
+                  alt="CricbuzPlus"
                   src="https://www.cricbuzz.com/images/cb_logo_plus_color.svg"
                 />
               </Box>
@@ -135,6 +154,8 @@ const Login = () => {
                   colorScheme="teal"
                   size="md"
                   w="80%"
+                  onClick={handleSubmit}
+                  type="submit"
                 >
                   Continue
                 </Button>
