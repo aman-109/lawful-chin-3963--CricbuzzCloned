@@ -1,0 +1,18 @@
+.dateBox{
+    padding: 10px 10px 5px;
+    background: #ECEBEB;
+    color: #222222;
+    height: 36px;
+    font-weight: bold;
+}
+.matchBox{
+    display: flex;
+    justify-content: space-between;
+    /* border: 1px solid blue; */
+
+}
+.matchBoxChild{
+    padding: 10px 10px 5px;
+    width: 30%;
+    line-height: 20px;
+}

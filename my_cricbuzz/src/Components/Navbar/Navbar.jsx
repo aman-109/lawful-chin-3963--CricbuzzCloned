@@ -24,7 +24,7 @@ const Navbar = () => {
         </Box>
         </Link>
         <Box className={styles.tabBox}>Live Scores</Box>
-        <Box className={styles.tabBox}>Schedule</Box>
+        <Box className={styles.tabBox}><Link to="/schedule">Schedule</Link></Box>
         <Box className={styles.tabBox}>Archives</Box>
         <Stack
           direction={"row"}
