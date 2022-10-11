@@ -7,6 +7,7 @@ import ScheduleComp from "./ScheduleComp/ScheduleComp";
 
 const Schedule = () => {
   const [matchData,setMatchData] =useState([])
+  // const [pageData,setPageData]
 
 
   useEffect(() => {
@@ -61,7 +62,7 @@ const Schedule = () => {
                 <Box fontSize="24px" fontWeight={"bold"} padding={"15px 0px 10px 10px"}>Cricket Schedule</Box>
                 <Box margin={"0px 0px 10px"} display="flex" gap="1.5rem" padding={"10px"}>
                   <Box>
-                    <Button size="xs" _hover={{bg:"#009270",color:"#fff"}}  borderRadius={"18px"} padding={"0.5rem 1.2rem"}>International</Button>
+                    <Button size="xs" _hover={{bg:"#009270",color:"#fff"}} bg="#009270" color="#fff"  borderRadius={"18px"} padding={"0.5rem 1.2rem"}>International</Button>
                   </Box>
                   <Box>
                     <Button size="xs" _hover={{bg:"#009270",color:"#fff"}} borderRadius={"18px"} padding={"0.5rem 1.2rem"}>Domestic & others</Button>

@@ -79,7 +79,7 @@ const HomeContent = () => {
     axios
       .get("https://cricbuzz-cricket.p.rapidapi.com/news/v1/index", {headers: {
 
-              'X-RapidAPI-Key': '4c86d1e4f3mshb146809f6cdc24fp1ce4fejsn01d1fc53b900',
+              'X-RapidAPI-Key': '8fee5891e9mshc198b1f3322bf3ep11bec2jsn8e38bf1ae3d8',
               'X-RapidAPI-Host': 'cricbuzz-cricket.p.rapidapi.com'
             }})
       .then((res) => {
